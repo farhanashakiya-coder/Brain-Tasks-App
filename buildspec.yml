@@ -20,6 +20,6 @@ phases:
 
   post_build:
     commands:
-      - echo Pushing Docker image...
-      - docker push $ACCOUNT_ID.dkr.ecr.ap-south-1.amazonaws.com/$IMAGE_REPO_NAME:latest
+      - kubectl rollout restart deployment brain-tasks-deployment
+
 
