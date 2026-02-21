@@ -1,0 +1,25 @@
+version: 0.2
+
+env:
+  variables:
+    IMAGE_REPO_NAME: brain-tasks-app
+    AWS_DEFAULT_REGION: ap-south-1
+
+phases:
+  pre_build:
+    commands:
+      - 390635731868=$(aws sts get-caller-identity --query Account --output text)
+      - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin $390635731868.dkr.ecr.ap-south-1.amazonaws.com
+
+  build:
+    commands:
+      - docker build -t $brain-tasks-app .
+      - docker tag $brain-tasks-app:latest $390635731868.dkr.ecr.ap-south-1.amazonaws.com/$brain-tasks-app:latest
+
+  post_build:
+    commands:
+      - docker push $390635731868.dkr.ecr.ap-south-1.amazonaws.com/$brain-tasks-app:latest
+      - aws eks update-kubeconfig --region ap-south-1 --name brain-tasks-app
+      - kubectl apply -f Deployment.yml
+      - kubectl apply -f service.yml
+
