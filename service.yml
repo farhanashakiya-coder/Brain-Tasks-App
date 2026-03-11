@@ -3,10 +3,11 @@ kind: Service
 metadata:
   name: brain-tasks-service
 spec:
-  type: LoadBalancer
   selector:
     app: brain-tasks
   ports:
-    - port: 80
-      targetPort: 80
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+  type: LoadBalancer
 
