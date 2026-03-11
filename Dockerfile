@@ -1,12 +1,13 @@
-FROM nginx:alpine
+FROM node:18
 
-# Remove default nginx static files
-RUN rm -rf /usr/share/nginx/html/*
+WORKDIR /app
 
-# Copy built files to nginx folder
-COPY dist/ /usr/share/nginx/html/
+COPY package*.json ./
 
-# Expose port 80 inside container
-EXPOSE 80
+RUN npm install
 
-CMD ["nginx", "-g", "daemon off;"]
+COPY . .
+
+EXPOSE 3000
+
+CMD ["npm","start"]
