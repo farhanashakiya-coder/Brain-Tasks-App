@@ -31,4 +31,4 @@ phases:
       - aws eks update-kubeconfig --region $AWS_DEFAULT_REGION --name $CLUSTER_NAME
 
       - echo Restarting deployment
-      - kubectl rollout restart deployment brain-tasks-deployment
+      - kubectl set image deployment/brain-tasks-deployment brain-tasks=$REPOSITORY_URI:$IMAGE_TAG

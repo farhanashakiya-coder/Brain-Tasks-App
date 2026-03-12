@@ -1,0 +1,100 @@
+
+data:
+  mapRoles: |
+    - rolearn: Container] 2026/03/12 09:03:09.924459 Running command kubectl rollout restart deployment brain-tasks-deployment
+
+
+
+
+E0312 09:03:14.585086     487 memcache.go:265] "Unhandled Error" err="couldn't get current server API group list: the server has asked for the client toide credentials"
+
+
+
+
+E0312 09:03:15.302862     487 memcache.go:265] "Unhandled Error" err="couldn't get current server API group list: the server has asked for the client to provide credentials"
+
+
+
+
+E0312 09:03:16.071440     487 memcache.go:265] "Unhandled Error" err="couldn't get current server API group list: the server has asked for the client to prov
+
+E0312 09:03:16.773205     487 memcache.go:265] "Unhandled Error" err="couldn't get current server API group list: the server has asked for the client to provide credentials"
+
+
+
+
+E0312 09:03:17.485235     487 memcache.go:265] "Unhandled Error" err="couldn't get current server API group list: the server has asked for the client to provide credentials"
+
+
+
+error: You must be logged in to the server (the server has asked for the client to provide credentials)
+
+
+
+
+
+
+
+
+
+[Container] 2026/03/12 09:03:17.489259 Command did not exit successfully kubectl rollout restart deployment brain-tasks-deployment exit status
+
+
+
+
+[Container] 2026/03/12 09:03:17.495918 Phase complete: POST_BUILD State: FAILED
+
+
+
+
+[Container] 2026/03/12 09:03:17.495935 Phase context status code: COMMAND_EXECUTION_ERROR Message: Error while executing command: kubectl rollout restart deployment brain-tasks-deployment. Reason: e
+
+
+[Container] 2026/03/12 09:03:17.543205 Set report auto-discover timeout to 5 seconds
+
+
+
+
+[Container] 2026/03/12 09:03:17.543247 Expanding base directory path:  .
+
+
+
+[Container] 2026/03/12 09:03:17.546663 Assembling file list
+
+
+
+
+[Container] 2026/03/12 09:03:17.546675 Expanding .
+
+
+026/03/12 09:03:17.550085 Expanding file paths for base directory .
+
+
+
+
+[Container] 2026/03/12 09:03:17.550099 Assembling file list
+
+
+
+
+[Container] 26/03/12 09:03:17.550103 Expanding **/*
+
+
+
+
+[Container] 2026/03/12 09:03:17.554151 No matching auto-discover report paths found
+
+
+
+
+[Container] 202      groups:
+      - system:bootstrappers
+      - system:nodes
+      username: system:node:{{EC2PrivateDNSName}}
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2026-03-11T19:44:23Z"
+  name: aws-auth
+  namespace: kube-system
+  resourceVersion: "1246"
+  uid: 79f243c4-c487-424e-9d2b-d5699ddca12e
