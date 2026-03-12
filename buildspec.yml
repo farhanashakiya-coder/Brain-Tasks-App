@@ -24,6 +24,8 @@ phases:
 
   post_build:
     commands:
+      - echo Pushing Docker image to ECR
+      - docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo Updating kubeconfig
       - aws eks update-kubeconfig --region ap-south-1 --name brain-tasks-app-cluster
       - echo Checking cluster access
