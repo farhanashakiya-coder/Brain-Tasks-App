@@ -23,12 +23,12 @@ phases:
       - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $REPOSITORY_URI:$IMAGE_TAG
 
   post_build:
-    commands:
-      - echo Pushing Docker image to ECR...
-      - docker push $REPOSITORY_URI:$IMAGE_TAG
+  commands:
+    - echo Updating kubeconfig
+    - aws eks update-kubeconfig --region ap-south-1 --name brain-tasks-app-cluster
 
-      - echo Updating kubeconfig for EKS
-      - aws eks update-kubeconfig --region $AWS_DEFAULT_REGION --name $CLUSTER_NAME
+    - echo Checking cluster access
+    - kubectl get nodes
 
-      - echo Restarting deployment
-      - kubectl set image deployment/brain-tasks-deployment brain-tasks=$REPOSITORY_URI:$IMAGE_TAG
+    - echo Updating deployment image
+    - kubectl set image deployment/brain-tasks-deployment brain-tasks=$REPOSITORY_URI:$IMAGE_TAG
